@@ -22,7 +22,27 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@shared": ["src/app/shared/index.ts"],
+      "@shared/*": ["src/app/shared/*"],
+      "@pages": ["src/app/pages/index.ts"],
+      "@pages/*": ["src/app/pages/*"],
+      "@hooks": ["src/app/hooks/index.ts"],
+      "@hooks/*": ["src/app/hooks/*"],
+      "@widgets": ["src/app/widgets/index.ts"],
+      "@widgets/*": ["src/app/widgets/*"],
+      "@features": ["src/app/features/index.ts"],
+      "@features/*": ["src/app/features/*"],
+      "@config": ["src/app/config/index.ts"],
+      "@routes": ["src/app/routes/index.tsx"],
+      "@routes/*": ["src/app/routes/*"],
+      "@app": ["src/app"],
+      "@app/*": ["src/app/*"],
+      "@entities": ["src/app/entities"],
+      "@entities/*": ["src/app/entities/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "src/hero.ts"]
 }
