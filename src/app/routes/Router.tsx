@@ -1,18 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { createBrowserRouter, Outlet } from 'react-router-dom'
+import { AppProviders } from '@app/providers/AppProviders'
 import { SendPage, HistoryPage } from '@pages'
-import { AppLayout } from './AppLayout'
+import { AppLayout } from '@widgets/AppLayout'
+import { Preloader } from '@features'
 import { ROUTES } from './routes'
 
-export function AppRouter() {
-  return (
-    <BrowserRouter>
-      <AppLayout>
-        <Routes>
-          <Route path={ROUTES.HOME} element={<SendPage />} />
-          <Route path={ROUTES.SEND} element={<SendPage />} />
-          <Route path={ROUTES.HISTORY} element={<HistoryPage />} />
-        </Routes>
-      </AppLayout>
-    </BrowserRouter>
-  )
-}
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+        <AppProviders>
+            <Preloader minLoadingTime={3000} />
+            <AppLayout>
+              <Outlet />
+            </AppLayout>
+        </AppProviders>
+    ),
+    children: [
+      { index: true, element: <SendPage /> },
+      { path: ROUTES.SEND, element: <SendPage /> },
+      { path: ROUTES.HISTORY, element: <HistoryPage /> }
+    ]
+  }
+])

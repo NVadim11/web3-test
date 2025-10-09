@@ -1,11 +1,7 @@
-import { Layout } from '@shared'
-import { AppRouter } from './routes'
+import { router } from '@routes/Router'
+import { RouterProvider } from 'react-router-dom';
 
 export const App = () => {
-  return (
-    <Layout>
-      <AppRouter />
-    </Layout>
-  )
+    return <RouterProvider router={router} />;
 }
 
