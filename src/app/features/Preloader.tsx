@@ -23,28 +23,23 @@ export const Preloader: React.FC<PreloaderProps> = ({
 
   useEffect(() => {
     const initializeApp = async () => {
-      try {
-        const steps = [
-          { text: 'Connecting to blockchain...', progress: 10 },
-          { text: 'Checking wallet connection...', progress: 40 },
-          { text: 'Loading configuration...', progress: 70 },
-          { text: 'Initializing application...', progress: 90 },
-        ];
+      const steps = [
+        { text: 'Connecting to blockchain...', progress: 10 },
+        { text: 'Checking wallet connection...', progress: 40 },
+        { text: 'Loading configuration...', progress: 70 },
+        { text: 'Initializing application...', progress: 90 },
+      ];
 
-        const stepDuration = minLoadingTime / steps.length;
+      const stepDuration = minLoadingTime / steps.length;
 
-        for (const step of steps) {
-          setLoadingStep(step.text);
-          setProgress(step.progress);
-          await new Promise(resolve => setTimeout(resolve, stepDuration));
-        }
-
-        setProgress(100);
-        setIsVisible(false);
-      } catch (error) {
-        console.error('App initialization error:', error);
-        setIsVisible(false);
+      for (const step of steps) {
+        setLoadingStep(step.text);
+        setProgress(step.progress);
+        await new Promise(resolve => setTimeout(resolve, stepDuration));
       }
+
+      setProgress(100);
+      setIsVisible(false);
     };
 
     initializeApp();
